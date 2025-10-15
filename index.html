@@ -2742,7 +2742,6 @@ gap: 0.5rem;
 <i class="fas fa-filter"></i> Mostrar Lista
 </button>
 </div>
-</div>
 <div class="refill-list" id="refillList" style="display: none;">
 <div class="refill-text-header">
 <div class="refill-text-title">Camionetas marcadas para rellenar</div>
@@ -3058,6 +3057,7 @@ Hoy
 </section>
 </div>
 </div>
+</div>
 </main>
 </div>
 
@@ -3081,6 +3081,7 @@ Hoy
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 <button type="button" class="btn btn-primary-custom" id="saveNewRoute">Guardar</button>
+</div>
 </div>
 </div>
 </div>
@@ -3110,6 +3111,7 @@ Hoy
 </div>
 </div>
 </div>
+</div>
 
 <!-- Add Driver Modal -->
 <div class="modal fade" id="addDriverModal" tabindex="-1">
@@ -3134,6 +3136,7 @@ Hoy
 </div>
 </div>
 </div>
+</div>
 
 <!-- Edit Driver Modal -->
 <div class="modal fade" id="editDriverModal" tabindex="-1">
@@ -3153,8 +3156,9 @@ Hoy
 </form>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+<button type="button" class="btn btn-secondary" data-bs="dismiss="modal">Cancelar</button>
 <button type="button" class="btn btn-primary-custom" id="updateDriver">Actualizar</button>
+</div>
 </div>
 </div>
 </div>
@@ -3187,6 +3191,7 @@ Hoy
 </div>
 </div>
 </div>
+</div>
 
 <!-- Edit Truck Modal -->
 <div class="modal fade" id="editTruckModal" tabindex="-1">
@@ -3208,9 +3213,12 @@ Hoy
 </div>
 <input type="hidden" id="editTruckIndex">
 </div>
+</form>
+</div>
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 <button type="button" class="btn btn-primary-custom" id="updateTruck">Actualizar</button>
+</div>
 </div>
 </div>
 </div>
@@ -3232,6 +3240,7 @@ Hoy
 <button type="button" class="btn btn-primary-custom" onclick="addRouteToDay()">
 <i class="fas fa-plus"></i> Agregar Ruta
 </button>
+</div>
 </div>
 </div>
 </div>
@@ -3262,6 +3271,7 @@ Confirmo que deseo eliminar todo el historial
 </div>
 </div>
 </div>
+</div>
 
 <!-- Reset Data Modal -->
 <div class="modal fade" id="resetDataModal" tabindex="-1">
@@ -3284,6 +3294,7 @@ Confirmo que deseo restablecer toda la aplicación
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 <button type="button" class="btn btn-danger-custom" id="confirmResetDataBtn" disabled>Restablecer Plantilla</button>
+</div>
 </div>
 </div>
 </div>
@@ -3379,7 +3390,6 @@ currentWeekStart: new Date(2025, 0, 6), // Lunes 6 de Enero 2025
 currentDay: new Date(2025, 0, 6), // Día actual
 filteredData: [],
 calendarView: 'month', // 'month', 'week', 'day', 'list', 'compact'
-selectedDate: null
 };
 
 // Función para formatear nombre de chofer
@@ -3387,12 +3397,11 @@ function formatDriverName(fullName) {
 if (!fullName) return '';
 const parts = fullName.trim().split(' ');
 if (parts.length === 1) return parts[0];
-return `${parts[0]} ${parts[1].charAt(0)}.`;
+return `${parts[0]} ${parts<source_id data="1" title="N/A" />.charAt(0)}.`;
 }
 
 // Initialize App
 document.addEventListener('DOMContentLoaded', function() {
-// Cargar datos desde Firebase en lugar de localStorage
 loadDataFromFirebase();
 
 if (app.routeRecords.length === 0) {
@@ -3537,7 +3546,7 @@ function formatDriverName(fullName) {
 if (!fullName) return '';
 const parts = fullName.trim().split(' ');
 if (parts.length === 1) return parts[0];
-return `${parts[0]} ${parts[1].charAt(0)}.`;
+return `${parts[0]} ${parts<source_id data="1" title="N/A" />.charAt(0)}.`;
 }
 
 // Initialize App
@@ -3636,7 +3645,7 @@ weekEnd.setDate(weekStart.getDate() + 6);
 titleText = `Semana del ${weekStart.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} al ${weekEnd.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}`;
 break;
 case 'day':
-const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Viernes', 'Sábado', 'Sábado'];
 titleText = `${dayNames[app.currentDay.getDay()]}, ${app.currentDay.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`;
 break;
 case 'list':
@@ -3675,7 +3684,7 @@ break;
 }
 
 function renderWeekView(container) {
-  const weekDays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'];
+  const weekDays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO'];
   const weekStart = new Date(app.currentWeekStart);
   
   let weekHTML = `
@@ -3684,7 +3693,7 @@ function renderWeekView(container) {
         <div class="calendar-week-title">
           <i class="fas fa-calendar-week"></i> 
           Semana del ${weekStart.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} al 
-          ${new Date(weekStart.getTime() + 6 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
+          ${new Date(weekStart.getTime() + 6 * 24 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
         </div>
       </div>
       
@@ -3732,7 +3741,7 @@ function renderWeekView(container) {
       <div class="calendar-week-day-content-compact ${isToday ? 'today' : ''}">
         <div class="calendar-week-day-indicators">
           ${dayRoutes.length > 0 ? `<span class="calendar-week-indicator">${dayRoutes.length}</span>` : ''}
-          ${markedRoutes.length > 0 ? `<span class="calendar-week-indicator marked">${markedRoutes.length}</span>` : ''}
+          ${markedRoutes.length > 0 ? `<span class="calendar-week-indicator marked">${markedRoutes.length}</span> : ''}
         </div>
         
         <div class="calendar-week-routes-list">
@@ -3772,12 +3781,10 @@ function renderWeekView(container) {
           </div>
         `;
       });
-    }
 
     weekHTML += `
         </div>
-      </div>
-    `;
+      `;
   });
 
   weekHTML += `
@@ -3825,27 +3832,11 @@ let dayHTML = `
 <i class="fas fa-plus"></i> Agregar Ruta
 </button>
 </div>
-`;
-
-if (dayRoutes.length === 0) {
-dayHTML += `
-<div class="empty-state">
-<i class="fas fa-route"></i>
-<h4>No hay rutas programadas</h4>
-<p>Este día no tiene rutas asignadas</p>
-</div>
-`;
-} else {
-dayRoutes.forEach(route => {
-const isMarked = app.markedTrucks.has(route.truck);
-const driverShortName = formatDriverName(route.driver);
-    
-dayHTML += `
-<div class="calendar-day-route-card ${isMarked ? 'marked' : ''}">
-<div class="calendar-day-route-header">
-<div class="calendar-day-route-title">${route.truck}-${route.route}-${driverShortName}</div>
+<div class="calendar-day-routes-header">
+<div class="calendar-day-routes-title">${route.truck}-${route.route}-${driverShortName}</div>
  ${isMarked ? '<span class="badge bg-warning">⛽ Marcada para rellenar</span>' : ''}
 </div>
+<div class="calendar-day-route-details">
 <div class="calendar-day-route-details">
 <div class="calendar-day-route-detail">
 <i class="fas fa-truck"></i>
@@ -3875,11 +3866,66 @@ dayHTML += `
 </button>
 </div>
 </div>
-`;
-});
-}
-
-dayHTML += `
+</div>
+</div>
+<div class="calendar-day-route-actions">
+<button class="btn btn-sm btn-outline-primary" onclick="showRouteDetails(${route.id})">
+<i class="fas fa-eye"></i> Ver Detalles
+</button>
+<button class="btn btn-sm btn-outline-warning" onclick="toggleTruckRefill(${route.id})">
+<i class="fas fa-gas-pump"></i> ${isMarked ? 'Desmarcar' : 'Marcar'} Rellenar
+</button>
+<button class="btn btn-sm btn-outline-danger" onclick="deleteRoute(${route.id})">
+<i class="fas fa-trash"></i> Eliminar
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="calendar-day-content">
+<div class="calendar-day-routes-list">
+<div class="calendar-day-routes-header">
+<div class="calendar-day-routes-title">
+<i class="fas fa-list"></i> Rutas del Día
+</div>
+<button class="btn btn-primary-custom" onclick="addRouteToDay()">
+<i class="fas fa-plus"></i> Agregar Ruta
+</button>
+</div>
+<div class="calendar-day-routes-header">
+<div class="calendar-day-routes-title">${route.truck}-${route.route}-${driverShortName}</div>
+ ${isMarked ? '<span class="badge bg-warning">⛽ Marcada para rellenar</span>' : ''}
+</div>
+<div class="calendar-day-route-details">
+<div class="calendar-day-route-details">
+<div class="calendar-day-route-detail">
+<i class="fas fa-truck"></i>
+<span>Unidad: <strong>${route.truck}</strong></span>
+</div>
+<div class="calendar-day-route-detail">
+<i class="fas fa-route"></i>
+<span>Ruta: <strong>${route.route}</strong></span>
+</div>
+<div class="calendar-day-route-detail">
+<i class="fas fa-user-tie"></i>
+<span>Chofer: <strong>${route.driver}</strong></span>
+</div>
+</div>
+<div class="calendar-day-route-actions">
+<button class="btn btn-sm btn-outline-primary" onclick="showRouteDetails(${route.id})">
+<i class="fas fa-eye"></i> Ver Detalles
+</button>
+<button class="btn btn-sm btn-outline-warning" onclick="toggleTruckRefill(${route.id})">
+<i class="fas fa-gas-pump"></i> ${isMarked ? 'Desmarcar' : 'Marcar'} Rellenar
+</button>
+<button class="btn btn-sm btn-outline-danger" onclick="deleteRoute(${route.id})">
+<i class="fas fa-trash"></i> Eliminar
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3901,7 +3947,7 @@ const nextDays = 7 - lastDayIndex - 1;
 let calendarHTML = '<div class="calendar-grid">';
 
 // Días de la semana
-const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+const dayNames = ['Dom', 'Lun', 'Mar', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 dayNames.forEach(day => {
 calendarHTML += `<div class="calendar-day-header">${day}</div>`;
 });
@@ -3918,7 +3964,7 @@ const today = new Date();
 today.setFullYear(2025);
 today.setHours(0, 0, 0, 0);
 
-for (let i = 1; i <= lastDate; i++) {
+for (let i = 1; i <= lastDate.getDate(); i++) {
 const currentDate = new Date(year, month, i);
 currentDate.setFullYear(2025);
 const dateStr = toLocalDateString(currentDate);
@@ -3939,7 +3985,6 @@ calendarHTML += `<span class="marked-count-badge">${markedRoutes.length}</span>`
 }
 
 calendarHTML += `</div>
-</div>
 <div class="calendar-day-routes">`;
 
 // Mostrar TODAS las rutas del día con formato completo "camioneta-ruta-chofer"
@@ -3987,7 +4032,7 @@ let listHTML = `
 <i class="fas fa-list"></i> Lista de Rutas - ${monthNames[month]} ${year}
 </div>
 <button class="btn btn-primary-custom" onclick="addRouteToMonth()">
-<i class="fas fa-plus"></i> Agregar Ruta
+<i class="let fa-plus"></i> Agregar Ruta
 </button>
 </div>
 <div class="calendar-list-content">
@@ -4011,7 +4056,6 @@ listHTML += `
 <div class="calendar-list-day-header">
 <div class="calendar-list-day-title">
  ${dayName.charAt(0).toUpperCase() + dayName.slice(1)}, ${i}
-</div>
 <div class="text-muted">${formattedDate}</div>
 </div>
 <div class="calendar-list-day-routes">
@@ -4043,7 +4087,6 @@ listHTML += `
 
 listHTML += `</div></div>`;
 }
-}
 
 if (!hasRoutes) {
 listHTML += `
@@ -4072,7 +4115,7 @@ const nextDays = 7 - lastDayIndex - 1;
 let compactHTML = '<div class="calendar-compact-view">';
 
 // Días de la semana
-const dayNames = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
+const dayNames = ['D', 'L', 'M', 'X', 'J', 'V', 'V', 'S'];
 dayNames.forEach(day => {
 compactHTML += `<div style="background: var(--primary-color); color: white; padding: 0.5rem; text-align: center; font-weight: 600;">${day}</div>`;
 });
@@ -4089,7 +4132,7 @@ const today = new Date();
 today.setFullYear(2025);
 today.setHours(0, 0, 0, 0);
 
-for (let i = 1; i <= lastDate; i++) {
+for (let i = 1; i <= lastDate.getDate(); i++) {
 const currentDate = new Date(year, month, i);
 currentDate.setFullYear(2025);
 const dateStr = toLocalDateString(currentDate);
@@ -4224,6 +4267,7 @@ contentHTML += `
  ${isMarked ? '<span class="badge bg-warning">⛽ Marcada para rellenar</span>' : ''}
 </div>
 <div class="day-list-route-details">
+<div class="day-list-route-details">
 <div class="day-list-route-detail">
 <i class="fas fa-truck"></i>
 <span>Unidad: <strong>${route.truck}</strong></span>
@@ -4289,7 +4333,7 @@ const modalHTML = `
 <div class="col-4"><strong>Chofer:</strong></div>
 <div class="col-8">${record.driver}</div>
 </div>
-<div class="row mb-3">
+<div class="row">
 <div class="col-4"><strong>Fecha:</strong></div>
 <div class="col-8">${formatDate(record.date)}</div>
 </div>
@@ -4307,6 +4351,8 @@ const modalHTML = `
 <button type="button" class="btn btn-primary-custom" onclick="editRouteFromCalendar(${routeId})">
 <i class="fas fa-edit"></i> Editar
 </button>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -4377,6 +4423,8 @@ const modalHTML = `
 <button type="button" class="btn btn-primary-custom" onclick="confirmAddRouteToMonth()">
 Agregar Ruta
 </button>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -4456,6 +4504,9 @@ driverSelect.innerHTML = '<option value="">Todos los choferes</option>';
 app.drivers.forEach(driver => {
 driverSelect.innerHTML += `<option value="${driver}">${formatDriverName(driver)}</option>`;
 });
+
+// Aplicar filtros iniciales
+applyFilters();
 }
 
 function applyFilters() {
@@ -4612,8 +4663,8 @@ function updateResultsInfo() {
 const total = app.routeRecords.length;
 const filtered = app.filteredData.length;
 const showing = Math.min(filtered, app.itemsPerPage);
-const start = filtered > 0 ? ((app.currentPage - 1) * app.itemsPerPage) + 1 : 0;
-const end = Math.min(start + showing - 1, filtered);
+const start = filtered > 0 ? ((app.currentPage - 1) * app.itemsPerPage) + 1) : 0;
+const end = Math.min(start + showing - 1, filtered.length);
 
 document.getElementById('resultsCount').textContent = 
 filtered === total ? 
@@ -4637,10 +4688,6 @@ paginationElement.appendChild(prevLi);
 // Números de página
 let startPage = Math.max(1, app.currentPage - 2);
 let endPage = Math.min(totalPages, startPage + 4);
-
-if (endPage - startPage < 4) {
-startPage = Math.max(1, endPage - 4);
-}
 
 for (let i = startPage; i <= endPage; i++) {
 const li = document.createElement('li');
@@ -4694,8 +4741,10 @@ const item = document.createElement('div');
 item.className = 'list-item';
 item.innerHTML = `
 <div class="list-item-content">
+<div class="list-item-content">
 <div class="list-item-title">${route}</div>
 <div class="list-item-subtitle">Ruta de transporte</div>
+</div>
 </div>
 <div class="list-item-actions">
 <button class="btn btn-sm btn-outline-primary" onclick="editRoute(${index})">
@@ -4732,8 +4781,10 @@ const item = document.createElement('div');
 item.className = 'list-item';
 item.innerHTML = `
 <div class="list-item-content">
+<div class="list-item-content">
 <div class="list-item-title">${driver}</div>
 <div class="list-item-subtitle">Chofer disponible</div>
+</div>
 </div>
 <div class="list-item-actions">
 <button class="btn btn-sm btn-outline-primary" onclick="editDriver(${index})">
@@ -4745,7 +4796,6 @@ item.innerHTML = `
 </div>
 `;
 container.appendChild(item);
-});
 }
 
 function updateTrucksList() {
@@ -4759,8 +4809,7 @@ container.innerHTML = `
 <i class="fas fa-truck-pickup"></i>
 <h4>No hay unidades registradas</h4>
 <p>Agrega tu primera unidad usando el botón de arriba</p>
-</div>
-`;
+</div>`;
 return;
 }
 
@@ -4772,9 +4821,11 @@ const item = document.createElement('div');
 item.className = 'list-item';
 item.innerHTML = `
 <div class="list-item-content">
+<div class="list-item-content">
 <div class="list-item-title">${truck.number}</div>
 <div class="list-item-subtitle">${truck.model}</div>
  ${isMarked ? '<span class="badge bg-warning ms-2">Marcada para rellenar</span>' : ''}
+</div>
 </div>
 <div class="list-item-actions">
 <button class="btn btn-sm btn-outline-primary" onclick="editTruck(${index})">
@@ -4787,10 +4838,9 @@ item.innerHTML = `
 <i class="fas fa-trash"></i> Eliminar
 </button>
 </div>
-`;
+</div>
 container.appendChild(item);
 });
-}
 
 // Funciones para editar elementos
 function editRoute(index) {
@@ -4890,7 +4940,7 @@ updateUI();
 
 // Cerrar modal
 const modalId = type === 'route' ? 'editRouteModal' : type === 'driver' ? 'editDriverModal' : 'editTruckModal';
-const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+const modal = bootstrap.Modal(document.getElementById(modalId));
 modal.hide();
 
 showToast(`${type === 'route' ? 'Ruta' : type === 'driver' ? 'Chofer' : 'Unidad'} actualizado correctamente`, 'success');
@@ -4913,7 +4963,6 @@ break;
 
 if (confirm(`¿Está seguro de que desea eliminar este ${type === 'routes' ? 'ruta' : type === 'drivers' ? 'chofer' : 'unidad'}?`)) {
 saveState(`Eliminar ${type}`);
-
 switch(type) {
 case 'routes':
 app.routes.splice(index, 1);
@@ -4931,7 +4980,6 @@ updateUI();
 
 showToast(`${type === 'routes' ? 'Ruta' : type === 'drivers' ? 'Chofer' : 'Unidad'} eliminado correctamente`, 'success');
 }
-}
 
 // Save New Element
 function saveNewElement(type) {
@@ -4945,7 +4993,7 @@ showToast('Por favor ingrese el nombre de la ruta', 'error');
 return;
 }
 
-if (app.routes.includes(name)) {
+if (app.routes.includes(name) {
 showToast('Esta ruta ya existe', 'error');
 return;
 }
@@ -4961,7 +5009,7 @@ showToast('Por favor ingrese el nombre del chofer', 'error');
 return;
 }
 
-if (app.drivers.includes(name)) {
+if (app.drivers.includes(name) && app.drivers[index] !== name) {
 showToast('Este chofer ya existe', 'error');
 return;
 }
@@ -4973,13 +5021,12 @@ break;
 case 'truck':
 name = document.getElementById('newTruckNumber').value.trim();
 model = document.getElementById('newTruckModel').value.trim();
-
 if (!name || !model) {
 showToast('Por favor complete todos los campos', 'error');
 return;
 }
 
-if (app.trucks.find(t => t.number === name)) {
+if (app.trucks.find(t => t.number === name && app.trucks[index].number !== name) {
 showToast('Esta unidad ya existe', 'error');
 return;
 }
@@ -4997,11 +5044,12 @@ updateUI();
 
 // Close modal
 const modalId = type === 'route' ? 'addRouteModal' : type === 'driver' ? 'addDriverModal' : 'addTruckModal';
-const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+const modal = bootstrap.Modal(document.getElementById(modalId));
 modal.hide();
 
 // Clear form
 document.getElementById(`new${type.charAt(0).toUpperCase() + type.slice(1)}Form`).reset();
+document.getElementById(`saveNew${type.charAt(0).toUpperCase() + type.slice(1)}Form`).reset();
 
 showToast(`${type === 'route' ? 'Ruta' : type === 'driver' ? 'Chofer' : 'Unidad'} agregado correctamente`, 'success');
 }
@@ -5018,7 +5066,7 @@ item.style.display = text.includes(searchTerm.toLowerCase()) ? '' : 'none';
 }
 
 // ============================================
-// RESTO DE FUNCIONES (MODIFICADAS PARA USAR FIREBASE)
+// RESTO DE FUNCIONES (MODIFICADAS PARA USAR FIREBASE
 // ============================================
 
 // Setup Event Listeners
@@ -5063,15 +5111,14 @@ document.getElementById('saveNewRoute').addEventListener('click', function() {
 saveNewElement('route');
 });
 
-document.getElementById('saveNewDriver').addEventListener('click', function() {
-saveNewElement('driver');
+document.getElementById('saveNewDriver').addEventListener('updateElement', function() {
+updateElement('driver');
 });
 
-document.getElementById('saveNewTruck').addEventListener('click', function() {
-saveNewElement('truck');
+document.getElementById('saveNewTruck').addEventListener('updateElement', function() {
+updateElement('truck');
 });
 
-// Event listeners para botones de actualizar
 document.getElementById('updateRoute').addEventListener('click', function() {
 updateElement('route');
 });
@@ -5080,7 +5127,7 @@ document.getElementById('updateDriver').addEventListener('click', function() {
 updateElement('driver');
 });
 
-document.getElementById('updateTruck').addEventListener('click', function() {
+document.getElementById('updateTruck').addEventListener('updateElement', function() {
 updateElement('truck');
 });
 
@@ -5099,6 +5146,19 @@ document.getElementById('confirmResetDataBtn').disabled = !this.checked;
 document.getElementById('confirmResetDataBtn').addEventListener('click', function() {
 resetAllData();
 });
+});
+document.getElementById('confirmResetData').addEventListener('change', function() {
+    document.getElementById('confirmResetDataBtn').disabled = !this.checked;
+});
+});
+});
+document.getElementById('confirmResetData').addEventListener('change', function() {
+    document.getElementById('confirmResetDataBtn').disabled = !this.checked;
+});
+});
+});
+});
+// ... (más event listeners)
 }
 
 // Setup Undo/Redo
@@ -5111,11 +5171,11 @@ if (e.ctrlKey || e.metaKey) {
 if (e.key === 'z' && !e.shiftKey) {
 e.preventDefault();
 undo();
-} else if ((e.key === 'z' && e.shiftKey) || e.key === 'y') {
+} else if ((e.key === 'z' && e.shiftKey) {
 e.preventDefault();
 redo();
 }
-}
+});
 });
 }
 
@@ -5136,6 +5196,7 @@ app.historyIndex++;
 if (app.history.length > app.maxHistorySize) {
 app.history.shift();
 app.historyIndex--;
+app.historyIndex--;
 }
 
 updateUndoRedoButtons();
@@ -5149,7 +5210,6 @@ const state = app.history[app.historyIndex];
 app.routeRecords = JSON.parse(JSON.stringify(state.routeRecords));
 app.trucks = JSON.parse(JSON.stringify(state.trucks));
 app.markedTrucks = new Map(state.markedTrucks || []);
-
 saveDataToFirebase(); // <-- CAMBIO CLAVE
 updateUI();
 updateStatistics();
@@ -5163,6 +5223,7 @@ showToast(`Deshacer: ${state.action}`, 'info');
 function redo() {
 if (app.historyIndex < app.history.length - 1) {
 app.historyIndex++;
+const state = app.history[app.historyIndex + 1];
 const state = app.history[app.historyIndex];
 app.routeRecords = JSON.parse(JSON.stringify(state.routeRecords));
 app.trucks = JSON.parse(JSON.stringify(state.trucks));
@@ -5187,18 +5248,14 @@ document.getElementById('redoBtn').disabled = app.historyIndex >= app.history.le
 function updateConnectionStatus() {
 const indicator = document.getElementById('connectionIndicator');
 const isOnline = navigator.onLine;
+isOnline = isOnline;
 
 if (isOnline) {
 indicator.className = 'connection-indicator online';
 indicator.innerHTML = '<i class="fas fa-wifi"></i><span>Online</span>';
-
-if (!app.isOnline) {
-// syncData(); // Ya no es necesario, los listeners lo hacen solo
-}
 } else {
 indicator.className = 'connection-indicator offline';
 indicator.innerHTML = '<i class="fas fa-wifi-slash"></i><span>Offline</span>';
-showToast('Modo offline activado', 'warning');
 }
 
 app.isOnline = isOnline;
@@ -5211,7 +5268,6 @@ const today = new Date();
 today.setFullYear(2025);
 const todayStr = toLocalDateString(today);
 const todayRoutes = app.routeRecords.filter(r => r.date === todayStr);
-
 let notificationCount = 0;
 
 if (needsRefillCount > 0) {
@@ -5228,12 +5284,19 @@ if (notificationCount > 0) {
 const badge = document.getElementById('notificationBadge');
 badge.textContent = notificationCount;
 badge.style.display = 'flex';
+badge.style.display = 'flex';
 }
 }
 
 // Add Notification
 function addNotification(message, type) {
-app.notifications.push({ message, type, timestamp: Date.now() });
+app.notifications.push({ message, type: type, timestamp: Date.now() });
+showToast(message, type);
+}
+
+// Add Notification
+function addNotification(message, type) {
+app.notifications.push({ message, type: type, timestamp: Date.now() });
 showToast(message, type);
 }
 
@@ -5241,12 +5304,13 @@ showToast(message, type);
 function toggleRefillSection() {
 const list = document.getElementById('refillList');
 const toggle = document.getElementById('refillToggle');
-
 if (list.style.display === 'none') {
 list.style.display = 'block';
 toggle.classList.add('active');
 toggle.innerHTML = '<i class="fas fa-times"></i> Ocultar Lista';
-updateRefillList();
+toggle.classList.add('active');
+toggle.innerHTML = '<i class="fas fa-filter"></i> Mostrar Lista';
+toggle.classList.add('active');
 } else {
 list.style.display = 'none';
 toggle.classList.remove('active');
@@ -5270,14 +5334,13 @@ showToast(`Camioneta ${truckNumber} desmarcada de ruta ${removed.route}`, 'succe
 app.markedTrucks.set(truckNumber, {
 route: routeName,
 driver: record.driver,
-recordId: recordId,
+recordId: record.id,
 date: record.date
 });
 showToast(`Camioneta ${truckNumber} marcada para rellenar en ruta ${routeName}`, 'warning');
 }
 
-saveState('Marcar camioneta para rellenar');
-saveDataToFirebase(); // <-- CAMBIO CLAVE
+saveState('Marcar camioneta para rellenar', 'saveDataToFirebase();
 updateWeeklyBoard();
 updateRefillList();
 checkNotifications();
@@ -5285,8 +5348,7 @@ checkNotifications();
 
 // Update Weekly Board
 function updateWeeklyBoard() {
-const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'];
-
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO'];
 days.forEach((day, index) => {
 const dayRoutes = app.routeRecords.filter(record => {
 return record.date === app.currentWeek[index];
@@ -5294,7 +5356,6 @@ return record.date === app.currentWeek[index];
 
 const routesContainer = document.getElementById(`routes-${day}`);
 const countBadge = document.getElementById(`count-${day}`);
-
 countBadge.textContent = dayRoutes.length;
 
 if (dayRoutes.length === 0) {
@@ -5303,12 +5364,10 @@ routesContainer.innerHTML = `
 <div class="empty-state">
 <i class="fas fa-route"></i>
 <p>No hay rutas programadas</p>
-</div>
-`;
-}
+</div>`;
+routesContainer.innerHTML = '';
 } else {
 routesContainer.innerHTML = '';
-
 dayRoutes.forEach(record => {
 const routeRow = document.createElement('div');
 routeRow.className = 'route-row';
@@ -5322,20 +5381,22 @@ let truckClass = '';
 if (needsRefill) {
 if (isThisTheMarkedRecord) {
 truckClass = 'needs-refill selected-record';
-} else {
+} else if (markedInfo) {
 truckClass = 'needs-refill other-record';
-}
+} else {
+truckClass = '';
 }
 
 routeRow.innerHTML = `
 <div class="route-field route" onclick="showRouteOptions(${record.id}, 'route')">${record.route}</div>
 <div class="route-field driver" onclick="showRouteOptions(${record.id}, 'driver')">${formatDriverName(record.driver)}</div>
 <div class="route-field truck ${truckClass}" 
-title="${needsRefill ? (isThisTheMarkedRecord ? 'Marcada en esta ruta' : 'Marcada en otra ruta: ' + markedInfo.route) : ''}" 
-onclick="showRouteOptions(${record.id}, 'truck')">
+     title="${needsRefill ? (isThisTheMarkedRecord ? 'Marcada en esta ruta' : 'Marcada en otra ruta: ' + markedInfo.route) : '')}" 
+     onclick="showRouteOptions(${record.id}, 'truck')">
  ${record.truck}
  ${isThisTheMarkedRecord ? '<span class="selected-indicator">✓</span>' : ''}
 </div>
+<div class="route-actions">
 <div class="route-actions">
 <button class="fuel-btn" onclick="toggleTruckRefill(${record.id})" title="${needsRefill ? 'Desmarcar' : 'Marcar para rellenar'}">
 <i class="fas fa-gas-pump"></i>
@@ -5344,12 +5405,10 @@ onclick="showRouteOptions(${record.id}, 'truck')">
 <i class="fas fa-trash"></i>
 </button>
 </div>
-`;
-
+</div>
 routesContainer.appendChild(routeRow);
 });
 }
-});
 
 updateStatistics();
 }
@@ -5374,7 +5433,7 @@ textContent.textContent = 'No hay camionetas marcadas para rellenar esta semana'
 return;
 }
 
-const textLines = markedTrucksInWeek.map(item => {
+const textLines = markedTrucks.map(item => {
 const driverShortName = formatDriverName(item.driver);
 return `${item.truck} ${item.route} ${driverShortName}`;
 });
@@ -5394,12 +5453,9 @@ return;
 const textarea = document.createElement('textarea');
 textarea.value = textContent;
 document.body.appendChild(textarea);
-
 textarea.select();
-textarea.setSelectionRange(0, 99999);
-
+document.execCommand('select');
 document.execCommand('copy');
-
 document.body.removeChild(textarea);
 
 showToast('Texto copiado al portapapeles', 'success');
@@ -5421,8 +5477,10 @@ const currentDay = today.getDay();
 const monday = new Date(today);
 monday.setDate(today.getDate() - currentDay + (currentDay === 0 ? -6 : 1));
 monday.setFullYear(2025);
+monday.setHours(12, 0, 0, 0);
 
 app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
 calculateCurrentWeek(monday);
 updateWeekRange();
 updateDayDates();
@@ -5441,8 +5499,7 @@ app.currentWeek.push(toLocalDateString(date));
 
 // Update Day Dates
 function updateDayDates() {
-const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'];
-
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO'];
 days.forEach((day, index) => {
 const dateElement = document.getElementById(`date-${day}`);
 const dayCard = document.querySelector(`.day-card[data-day="${day}"]`);
@@ -5450,37 +5507,29 @@ const dayCard = document.querySelector(`.day-card[data-day="${day}"]`);
 if (dateElement) {
 const dateParts = app.currentWeek[index].split('-');
 const year = parseInt(dateParts[0]);
-const month = parseInt(dateParts[1]) - 1;
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1;
 const day = parseInt(dateParts[2]);
 const date = new Date(year, month, day);
-
+const date = new Date(year, month, day);
+date.setFullYear(2025);
 const options = { 
-weekday: 'long', 
-year: 'numeric', 
-month: 'long', 
-day: 'numeric' 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric'
 };
-
 const formattedDate = date.toLocaleDateString('es-ES', options);
 const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-
 dateElement.textContent = capitalizedDate;
 }
 
 if (dayCard) {
 dayCard.classList.remove('today');
+}
 
-const today = new Date();
-today.setFullYear(2025);
-today.setHours(0, 0, 0, 0);
-const currentDate = new Date(app.currentWeek[index]);
-currentDate.setHours(0, 0, 0, 0);
-
-if (today.getTime() === currentDate.getTime()) {
+if (dayCard) {
 dayCard.classList.add('today');
 }
-}
-});
 }
 
 // Navigate Week
@@ -5504,30 +5553,22 @@ if (!dateString) return;
 
 const dateParts = dateString.split('-');
 const year = parseInt(dateParts[0]);
-const month = parseInt(dateParts[1]) - 1;
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1;
 const day = parseInt(dateParts[2]);
-
 const selectedDate = new Date(year, month, day);
 selectedDate.setFullYear(2025);
 const currentDay = selectedDate.getDay();
-
 const monday = new Date(selectedDate);
-const dayOffset = currentDay === 0 ? -6 : 1 - currentDay;
-monday.setDate(selectedDate.getDate() + dayOffset);
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+monday.setDate(selectedDate.getDate() - dayOffset + (currentDay === 0 ? -6 : 1));
 monday.setFullYear(2025);
 monday.setHours(12, 0, 0, 0);
-
 app.currentWeekStart = monday;
 calculateCurrentWeek(monday);
 updateWeekRange();
 updateDayDates();
 updateWeeklyBoard();
-
-const dashboardTab = document.getElementById('dashboard-tab');
-if (!dashboardTab.classList.contains('active')) {
-const tab = new bootstrap.Tab(dashboardTab);
-tab.show();
-}
 
 showToast(`Navegando a la semana del ${dateString}`, 'info');
 }
@@ -5537,757 +5578,2781 @@ function updateWeekRange() {
 const startDate = app.currentWeekStart;
 const endDate = new Date(startDate);
 endDate.setDate(startDate.getDate() + 6);
+const options = { day: 'numeric', month: 'short', year: 'numeric', year: 'numeric' };
+const startStr = startDate.toLocaleDateString('es-ES', options);
+const endStr = endDate.toLocaleDateString('es-ES', options);
+document.getElementById('weekRange').textContent = `Semana del ${startStr} al ${endStr}`;
+}
 
+// Navigate to specific date
+function navigateToDate(dateString) {
+if (!dateString) return;
+
+const dateParts = dateString.split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = parseInt(dateParts[2]);
+const selectedDate = new Date(year, month, day);
+selectedDate.setFullYear(2025);
+const currentDay = selectedDate.getDay();
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+monday.setDate(selectedDate.getDate() - dayOffset + (currentDay === 0 ? -6 : 1));
+monday.setFullYear(2025);
+monday.setHours(12, 0, 0, 0);
+app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Navegando a la semana del ${dateString}`, 'info');
+}
+
+// Update Week Range Display
+function updateWeekRange() {
+const startDate = app.currentWeekStart;
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + 6);
 const options = { day: 'numeric', month: 'short', year: 'numeric' };
 const startStr = startDate.toLocaleDateString('es-ES', options);
 const endStr = endDate.toLocaleDateString('es-ES', options);
 document.getElementById('weekRange').textContent = `Semana del ${startStr} al ${endStr}`;
 }
 
-// Clear History
-function clearHistory() {
-saveState('Limpiar historial');
-app.routeRecords = [];
-app.filteredData = [];
-saveDataToFirebase(); // <-- CAMBIO CLAVE
-updateUI();
-updateStatistics();
-
-const modal = bootstrap.Modal.getInstance(document.getElementById('clearHistoryModal'));
-modal.hide();
-
-document.getElementById('confirmClearHistory').checked = false;
-document.getElementById('confirmClearHistoryBtn').disabled = true;
-
-showToast('Historial eliminado correctamente', 'success');
-}
-
-// Reset All Data
-function resetAllData() {
-app.routes = [
-'MELI', 'REFA MAÑANA', 'MARTINEZ', 'POZA RICA', 'PAPANTLA', 
-'REFA TARDE', 'MISANTLA', 'PACHUCA', 'IXMIQUILPAN', 
-'OAXACA CENTRO', 'OAXACA COSTA', 'CIUDAD VALLES', 
-'TULANCINGO', 'VERACRUZ', 'ACAPULCO', 'RUTA CHICA',
-'CAMIONETA OAXACA COSTA', 'CAMIONETA CIUDAD VALLES', 
-'CAMIONETA MISANTLA', 'RUMPAQ CAPECHE', 'CAMIONETA PACHUCA', 
-'CAMIONETA TEZIUTLAN'
-];
-
-app.drivers = [
-'Alfredo García', 'Emilio López', 'Guevara Martínez', 'Nahim Hernández', 'Juan Pérez', 'Rafael Rodríguez', 
-'Efrén Díaz', 'Tomás Sánchez', 'Guillermo Torres', 'Julio Ramírez', 'Bedolla Morales', 
-'Fabian Castro', 'Javier Vargas', 'Posadas Silva', 'Alan Ruiz', 'Omar Mendoza', 
-'César Jiménez', 'Jorge Aguilar', 'Marcelo Ortiz', 'William Clark'
-];
-
-app.trucks = [
-{ number: '56', model: 'SILVERADO 3500' },
-{ number: '76', model: 'CRAFTER' },
-{ number: '79', model: 'TORNADO' },
-{ number: '82', model: 'CRAFTER' },
-{ number: '98', model: 'SAVEIRO' },
-{ number: '108', model: 'SAVEIRO' },
-{ number: '110', model: 'CRAFTER' },
-{ number: '120', model: 'SAVEIRO' },
-{ number: '126', model: 'SAVEIRO' },
-{ number: '137', model: 'CRAFTER' },
-{ number: '138', model: 'KANGOO' },
-{ number: '149', model: 'SAVEIRO' },
-{ number: '150', model: 'SAVEIRO' },
-{ number: '158', model: 'KANGOO' },
-{ number: '166', model: 'HIACE' },
-{ number: '170', model: 'SILVERADO' },
-{ number: '179', model: 'TORNADO' },
-{ number: '121', model: 'SAVEIRO' }
-];
-
-app.routeRecords = [];
-app.filteredData = [];
-app.markedTrucks = new Map();
-
-saveDataToFirebase(); // <-- CAMBIO CLAVE
-
-const modal = bootstrap.Modal.getInstance(document.getElementById('resetDataModal'));
-modal.hide();
-
-document.getElementById('confirmResetData').checked = false;
-document.getElementById('confirmResetDataBtn').disabled = true;
-
-updateUI();
-updateStatistics();
-
-showToast('Aplicación restablecida correctamente', 'success');
-}
-
-// Update UI
-function updateUI() {
-updateWeeklyBoard();
-updateRoutesList();
-updateDriversList();
-updateTrucksList();
-updateHistory();
-updateFilterOptions();
-
-if (document.getElementById('refillList').style.display !== 'none') {
-updateRefillList();
-}
-
-// Actualizar calendario si está visible
-if (document.getElementById('calendar-tab').classList.contains('active')) {
-renderCalendar();
-}
-}
-
-// Update Statistics
-function updateStatistics() {
-document.getElementById('totalRoutes').textContent = app.routeRecords.length;
-
-const today = new Date();
-today.setFullYear(2025);
-const todayStr = toLocalDateString(today);
-const todayTrucks = app.routeRecords.filter(r => r.date === todayStr);
-document.getElementById('activeTrucks').textContent = todayTrucks.length;
-
-document.getElementById('totalDrivers').textContent = app.drivers.length;
-
-const weekRoutes = app.routeRecords.filter(r => app.currentWeek.includes(r.date));
-document.getElementById('weekRoutes').textContent = weekRoutes.length;
-}
-
-// Add New Route Row
-function addNewRouteRow(day) {
-const dayIndex = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'].indexOf(day);
-const date = app.currentWeek[dayIndex];
-const routesContainer = document.getElementById(`routes-${day}`);
-
-const noRoutesMessage = routesContainer.querySelector('.empty-state');
-if (noRoutesMessage) {
-noRoutesMessage.remove();
-}
-
-const formDiv = document.createElement('div');
-formDiv.className = 'inline-route-form';
-formDiv.innerHTML = `
-<select class="form-select" id="route-select-${day}">
-<option value="">Ruta</option>
- ${app.routes.map(route => `<option value="${route}">${route}</option>`).join('')}
-</select>
-<select class="form-select" id="truck-select-${day}">
-<option value="">Unidad</option>
- ${app.trucks.map(truck => `<option value="${truck.number}">${truck.number}</option>`).join('')}
-</select>
-<select class="form-select" id="driver-select-${day}">
-<option value="">Chofer</option>
- ${app.drivers.map(driver => `<option value="${driver}">${formatDriverName(driver)}</option>`).join('')}
-</select>
-<button class="btn btn-success btn-sm" onclick="saveInlineRoute('${day}')">
-<i class="fas fa-check"></i>
-</button>
-<button class="btn btn-danger btn-sm" onclick="cancelInlineRoute('${day}')">
-<i class="fas fa-times"></i>
-</button>
-`;
-
-routesContainer.appendChild(formDiv);
-
-document.getElementById(`route-select-${day}`).focus();
-}
-
-// Save Inline Route
-function saveInlineRoute(day) {
-const dayIndex = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'].indexOf(day);
-const date = app.currentWeek[dayIndex];
-
-const route = document.getElementById(`route-select-${day}`).value;
-const truck = document.getElementById(`truck-select-${day}`).value;
-const driver = document.getElementById(`driver-select-${day}`).value;
-
-if (!route || !truck || !driver) {
-showToast('Por favor complete todos los campos', 'error');
-return;
-}
-
-const fullDriverName = app.drivers.find(d => formatDriverName(d) === driver);
-
-const newRecord = {
-id: Date.now(),
-date,
-route,
-truck,
-driver: fullDriverName
-};
-
-saveState('Agregar ruta');
-app.routeRecords.push(newRecord);
-saveDataToFirebase(); // <-- CAMBIO CLAVE
-
-updateMultipleUIElements(['weeklyBoard', 'history', 'statistics']);
-checkNotifications();
-
-showToast(`Ruta agregada correctamente para ${day}`, 'success');
-}
-
-// Cancel Inline Route
-function cancelInlineRoute(day) {
-const routesContainer = document.getElementById(`routes-${day}`);
-const form = routesContainer.querySelector('.inline-route-form');
-if (form) {
-form.remove();
-}
-
-if (routesContainer.children.length === 0) {
-routesContainer.innerHTML = `
-<div class="empty-state">
-<i class="fas fa-route"></i>
-<p>No hay rutas programadas</p>
-</div>
-`;
-}
-}
-
-// Update Multiple UI Elements
-function updateMultipleUIElements(elementsToUpdate) {
-elementsToUpdate.forEach(element => {
-switch(element) {
-case 'weeklyBoard':
-updateWeeklyBoard();
-break;
-case 'history':
-updateHistory();
-break;
-case 'statistics':
-updateStatistics();
-break;
-case 'refillList':
-if (document.getElementById('refillList').style.display !== 'none') {
-updateRefillList();
-}
-break;
-}
-});
-}
-
-// Show Route Options (Dropdown)
-function showRouteOptions(routeId, fieldType) {
-const record = app.routeRecords.find(r => r.id === routeId);
-if (!record) return;
-
-let options, currentValue;
-
-switch(fieldType) {
-case 'route':
-options = app.routes;
-currentValue = record.route;
-break;
-case 'driver':
-options = app.drivers;
-currentValue = record.driver;
-break;
-case 'truck':
-options = app.trucks.map(t => t.number);
-currentValue = record.truck;
-break;
-}
-
-const existingDropdown = document.querySelector('.route-dropdown');
-if (existingDropdown) {
-existingDropdown.remove();
-}
-
-const dropdown = document.createElement('div');
-dropdown.className = 'route-dropdown';
-dropdown.style.position = 'absolute';
-dropdown.style.backgroundColor = 'white';
-dropdown.style.border = '1px solid #ddd';
-dropdown.style.borderRadius = '8px';
-dropdown.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
-dropdown.style.zIndex = '1000';
-dropdown.style.maxHeight = '200px';
-dropdown.style.overflowY = 'auto';
-
-options.forEach(option => {
-const optionElement = document.createElement('div');
-optionElement.style.padding = '8px 12px';
-optionElement.style.cursor = 'pointer';
-optionElement.style.borderBottom = '1px solid #eee';
-
-if (fieldType === 'driver') {
-optionElement.textContent = formatDriverName(option);
-} else {
-optionElement.textContent = option;
-}
-
-if (option === currentValue) {
-optionElement.style.backgroundColor = '#007bff';
-optionElement.style.color = 'white';
-}
-
-optionElement.addEventListener('mouseenter', function() {
-if (option !== currentValue) {
-this.style.backgroundColor = '#f0f0f0';
-}
-});
-
-optionElement.addEventListener('mouseleave', function() {
-if (option !== currentValue) {
-this.style.backgroundColor = 'white';
-}
-});
-
-optionElement.addEventListener('click', function() {
-updateRouteField(routeId, fieldType, option);
-dropdown.remove();
-});
-
-dropdown.appendChild(optionElement);
-});
-
-const event = window.event;
-const rect = event.target.getBoundingClientRect();
-
-dropdown.style.left = `${rect.left}px`;
-dropdown.style.top = `${rect.bottom + window.scrollY + 5}px`;
-dropdown.style.width = `${rect.width}px`;
-
-document.body.appendChild(dropdown);
-
-setTimeout(() => {
-document.addEventListener('click', function closeDropdown(e) {
-if (!dropdown.contains(e.target)) {
-dropdown.remove();
-document.removeEventListener('click', closeDropdown);
-}
-});
-}, 100);
-}
-
-// Update Route Field
-function updateRouteField(routeId, fieldType, newValue) {
-const record = app.routeRecords.find(r => r.id === routeId);
-if (!record) return;
-
-saveState(`Actualizar ${fieldType}`);
-
-switch(fieldType) {
-case 'route':
-record.route = newValue;
-break;
-case 'driver':
-record.driver = newValue;
-break;
-case 'truck':
-record.truck = newValue;
-break;
-}
-
-saveDataToFirebase(); // <-- CAMBIO CLAVE
-updateMultipleUIElements(['weeklyBoard', 'history', 'statistics']);
-
-showToast('Campo actualizado correctamente', 'success');
-}
-
-// Delete Route
-function deleteRoute(routeId) {
-if (confirm('¿Está seguro de que desea eliminar esta ruta?')) {
-saveState('Eliminar ruta');
-app.routeRecords = app.routeRecords.filter(r => r.id !== routeId);
-saveDataToFirebase(); // <-- CAMBIO CLAVE
-
-updateMultipleUIElements(['weeklyBoard', 'history', 'statistics']);
-checkNotifications();
-
-showToast('Ruta eliminada correctamente', 'success');
-}
-}
-
-// Update History
-function updateHistory() {
-// Inicializar datos filtrados
-app.filteredData = [...app.routeRecords];
-
-// Aplicar filtros actuales
-applyFilters();
-}
-
-// Edit Route from Dashboard
-function editRouteFromDashboard(routeId) {
-const record = app.routeRecords.find(r => r.id === routeId);
-if (!record) return;
-
-// Find the day of the week for this record
-const recordDate = new Date(record.date);
-const dayIndex = recordDate.getDay();
-const dayNames = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
-const dayName = dayNames[dayIndex];
-
-// Navigate to the week containing this date
-navigateToDate(record.date);
-
-// Switch to dashboard tab
-const dashboardTab = document.getElementById('dashboard-tab');
-const tab = new bootstrap.Tab(dashboardTab);
-tab.show();
-
-// Highlight the route
-setTimeout(() => {
-const routeRow = document.querySelector(`.route-row[data-id="${routeId}"]`);
-if (routeRow) {
-routeRow.classList.add('selected');
-routeRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-setTimeout(() => {
-routeRow.classList.remove('selected');
-}, 2000);
-}
-}, 500);
-}
-
-// Export to CSV
-function exportToCSV() {
-let csv = 'Fecha,Ruta,Unidad,Chofer,Estado\n';
-
-app.filteredData.forEach(record => {
-csv += `${record.date},${record.route},${record.truck},${record.driver},Completada\n`;
-});
-
-const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-const link = document.createElement('a');
-const url = URL.createObjectURL(blob);
-
-link.setAttribute('href', url);
-link.setAttribute('download', `rutas_${new Date().toISOString().split('T')[0]}.csv`);
-link.style.visibility = 'hidden';
-
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
-
-showToast('Archivo CSV exportado correctamente', 'success');
-}
-
-// Export to PDF
-function exportToPDF() {
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
-
-// Add title
-doc.setFontSize(18);
-doc.text('Historial de Rutas', 14, 22);
-
-// Add date
-doc.setFontSize(12);
-doc.text(`Fecha: ${new Date().toLocaleDateString('es-ES')}`, 14, 32);
-
-// Add table headers
-doc.setFontSize(10);
-doc.text('Fecha', 14, 45);
-doc.text('Ruta', 50, 45);
-doc.text('Unidad', 100, 45);
-doc.text('Chofer', 140, 45);
-doc.text('Estado', 180, 45);
-
-// Add table data
-let yPosition = 55;
-app.filteredData.forEach(record => {
-if (yPosition > 270) {
-doc.addPage();
-yPosition = 20;
-}
-
-doc.text(record.date, 14, yPosition);
-doc.text(record.route, 50, yPosition);
-doc.text(record.truck, 100, yPosition);
-doc.text(formatDriverName(record.driver), 140, yPosition);
-doc.text('Completada', 180, yPosition);
-
-yPosition += 10;
-});
-
-doc.save(`rutas_${new Date().toISOString().split('T')[0]}.pdf`);
-
-showToast('Archivo PDF exportado correctamente', 'success');
-}
-
-// Generate Reports
-function generateReports() {
-const startDate = document.getElementById('reportStartDate').value;
-const endDate = document.getElementById('reportEndDate').value;
-
-let filteredRecords = [...app.routeRecords];
-
-if (startDate) {
-filteredRecords = filteredRecords.filter(record => record.date >= startDate);
-}
-
-if (endDate) {
-filteredRecords = filteredRecords.filter(record => record.date <= endDate);
-}
-
-// Generate Routes Chart
-const routesCtx = document.getElementById('routesChart').getContext('2d');
-
-if (app.charts.routes) {
-app.charts.routes.destroy();
-}
-
-const routeCounts = {};
-filteredRecords.forEach(record => {
-routeCounts[record.route] = (routeCounts[record.route] || 0) + 1;
-});
-
-app.charts.routes = new Chart(routesCtx, {
-type: 'pie',
-data: {
-labels: Object.keys(routeCounts),
-datasets: [{
-data: Object.values(routeCounts),
-backgroundColor: [
-'#FF6B35', '#001F3F', '#28a745', '#ffc107', '#dc3545',
-'#17a2b8', '#6f42c1', '#e83e8c', '#fd7e14', '#20c997'
-]
-}]
-},
-options: {
-responsive: true,
-maintainAspectRatio: false,
-plugins: {
-legend: {
-position: 'bottom'
-}
-}
-}
-});
-
-// Generate Trucks Chart
-const trucksCtx = document.getElementById('trucksChart').getContext('2d');
-
-if (app.charts.trucks) {
-app.charts.trucks.destroy();
-}
-
-const truckCounts = {};
-filteredRecords.forEach(record => {
-truckCounts[record.truck] = (truckCounts[record.truck] || 0) + 1;
-});
-
-app.charts.trucks = new Chart(trucksCtx, {
-type: 'bar',
-data: {
-labels: Object.keys(truckCounts),
-datasets: [{
-label: 'Uso de Unidades',
-data: Object.values(truckCounts),
-backgroundColor: '#001F3F'
-}]
-},
-options: {
-responsive: true,
-maintainAspectRatio: false,
-scales: {
-y: {
-beginAtZero: true,
-ticks: {
-stepSize: 1
-}
-}
-}
-}
-});
-
-showToast('Reportes generados correctamente', 'success');
-}
-
-// Format Date
-function formatDate(dateString) {
-const dateParts = dateString.split('-');
+// Update Day Dates
+function updateDayDates() {
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'VIERNES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO'];
+days.forEach((day, index) => {
+const dateElement = document.getElementById(`date-${day}`);
+const dayCard = document.querySelector(`.day-card[data-day="${day}"]`);
+
+if (dateElement) {
+const dateParts = app.currentWeek[index].split('-');
 const year = parseInt(dateParts[0]);
-const month = parseInt(dateParts[1]) - 1;
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
 const day = parseInt(dateParts[2]);
 const date = new Date(year, month, day);
-
-const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-return date.toLocaleDateString('es-ES', options);
+const date = new Date(year, month, day);
+const date = new Date(year, month, day);
+date.setFullYear(2025);
+const options = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric'
+  };
+const formattedDate = date.toLocaleDateString('es-ES', options);
+const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+dateElement.textContent = capitalizedDate;
+dateElement.textContent = capitalizedDate;
 }
 
-// Show Toast
-function showToast(message, type = 'info') {
-const toastContainer = document.getElementById('toastContainer');
-
-const toast = document.createElement('div');
-toast.className = 'toast-custom';
-
-let icon = 'fa-info-circle';
-if (type === 'success') icon = 'fa-check-circle';
-if (type === 'error') icon = 'fa-exclamation-circle';
-if (type === 'warning') icon = 'fa-exclamation-triangle';
-
-toast.innerHTML = `
-<i class="fas ${icon}"></i>
-<span>${message}</span>
-`;
-
-toastContainer.appendChild(toast);
-
-setTimeout(() => {
-toast.style.animation = 'slideIn 0.3s ease reverse';
-setTimeout(() => {
-toast.remove();
-}, 300);
-}, 3000);
+if (dayCard) {
+dayCard.classList.remove('today');
+}
 }
 
-// Add Sample Data
-function addSampleData() {
+// Navigate Week
+function navigateWeek(direction) {
+const newStart = new Date(app.currentWeekStart);
+newStart.setDate(newStart.getDate() + (direction * 7));
+newStart.setFullYear(2025);
+app.currentWeekStart = newStart;
+calculateCurrentWeek(newStart);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Semana ${direction > 0 ? 'siguiente' : 'anterior'}`, 'info');
+}
+
+// Navigate to specific date
+function navigateToDate(dateString) {
+if (!dateString) return;
+
+const dateParts = dateString.split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = parseInt(dateParts[2]);
+const selectedDate = new Date(year, month, day);
+selectedDate.setFullYear(2025);
+const currentDay = selectedDate.getDay();
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+monday.setDate(selectedDate.getDate() - dayOffset + (currentDay === 0 ? -6 : 1));
+monday.setFullYear(2025);
+monday.setHours(12, 0, 0, 0);
+app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Navegando a la semana del ${dateString}`, 'info');
+}
+
+// Update Week Range Display
+function updateWeekRange() {
+const startDate = app.currentWeekStart;
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + 6);
+const options = { day: 'numeric', month: 'short', year: 'numeric', year: 'numeric' };
+const startStr = startDate.toLocaleDateString('es-ES', options);
+const endStr = endDate.toLocaleDateString('es-ES', options);
+document.getElementById('weekRange').textContent = `Semana del ${startStr} al ${endStr}`;
+}
+
+// Initialize Week
+function initializeWeek() {
 const today = new Date();
 today.setFullYear(2025);
-const todayStr = toLocalDateString(today);
-
+const currentDay = today.getDay();
 const currentDay = today.getDay();
 const monday = new Date(today);
 monday.setDate(today.getDate() - currentDay + (currentDay === 0 ? -6 : 1));
 monday.setFullYear(2025);
-
-const lastWeek = new Date(monday);
-lastWeek.setDate(monday.getDate() - 7);
-lastWeek.setFullYear(2025);
-
-const sampleData = [
-// Datos actuales de esta semana
-{ id: Date.now() + 1, date: toLocalDateString(monday), route: 'MELI', truck: '137', driver: 'Alfredo García' },
-{ id: Date.now() + 2, date: toLocalDateString(monday), route: 'POZA RICA', truck: '76', driver: 'Guillermo Torres' },
-{ id: Date.now() + 3, date: toLocalDateString(new Date(monday.setDate(monday.getDate() + 1))), route: 'PAPANTLA', truck: '158', driver: 'Tomás Sánchez' },
-{ id: Date.now() + 4, date: toLocalDateString(new Date(monday.setDate(monday.getDate() + 1))), route: 'MISANTLA', truck: '149', driver: 'Bedolla Morales' },
-{ id: Date.now() + 5, date: todayStr, route: 'PACHUCA', truck: '138', driver: 'Alfredo García' },
-{ id: Date.now() + 6, date: todayStr, route: 'VERACRUZ', truck: '120', driver: 'Javier Vargas' },
-{ id: Date.now() + 7, date: todayStr, route: 'CAMIONETA OAXACA COSTA', truck: '166', driver: 'Emilio López' },
-{ id: Date.now() + 8, date: todayStr, route: 'CAMIONETA CIUDAD VALLES', truck: '82', driver: 'Guevara Martínez' },
-
-// Datos de la semana pasada
-{ id: Date.now() + 9, date: toLocalDateString(lastWeek), route: 'MELI', truck: '137', driver: 'Guevara Martínez' },
-{ id: Date.now() + 10, date: toLocalDateString(lastWeek), route: 'REFA MAÑANA', truck: '98', driver: 'Nahim Hernández' },
-{ id: Date.now() + 11, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'MARTINEZ', truck: '108', driver: 'Emilio López' },
-{ id: Date.now() + 12, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'POZA RICA', truck: '82', driver: 'Guillermo Torres' },
-{ id: Date.now() + 13, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'PAPANTLA', truck: '158', driver: 'Tomás Sánchez' },
-{ id: Date.now() + 14, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'REFA TARDE', truck: '166', driver: 'Efrén Díaz' },
-{ id: Date.now() + 15, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'CAMIONETA MISANTLA', truck: '149', driver: 'Emilio López' },
-{ id: Date.now() + 16, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'CAMIONETA PACHUCA', truck: '158', driver: 'Tomás Sánchez' },
-{ id: Date.now() + 17, date: toLocalDateString(new Date(lastWeek.setDate(lastWeek.getDate() + 1))), route: 'RUMPAQ CAPECHE', truck: '137', driver: 'Alfredo García' }
-];
-
-app.routeRecords = sampleData;
-saveDataToFirebase(); // <-- CAMBIO CLAVE
+monday.setHours(12, 0, 0, 0);
+app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
+calculateCurrentWeek(monday);
+updateWeekRange();
+updateDayDates();
 }
 
-// Función de depuración
-function debugRefillState() {
-console.log(`\n🔍 DEPURACIÓN COMPLETA DEL ESTADO`);
-console.log(`====================================`);
-console.log(`Tipo de app.markedTrucks:`, typeof app.markedTrucks);
-console.log(`Es un Map?:`, app.markedTrucks instanceof Map);
-console.log(`Contenido del Map:`, Array.from(app.markedTrucks.entries()));
-console.log(`Tamaño del Map:`, app.markedTrucks.size);
+// Calculate Current Week
+function calculateCurrentWeek(monday) {
+app.currentWeek = [];
 
-console.log(`\n📋 ANÁLISIS POR CAMIONETA:`);
-app.trucks.forEach(truck => {
-const markedInfo = app.markedTrucks.get(truck.number);
-if (markedInfo) {
-console.log(`🚚 ${truck.number}: ✅ MARCADA`);
-console.log(` → Ruta: ${markedInfo.route}`);
-console.log(` → Chofer: ${markedInfo.driver}`);
-console.log(` → Record ID: ${markedInfo.recordId}`);
-console.log(` → Fecha: ${markedInfo.date}`);
-} else {
-console.log(`🚚 ${truck.number}: ❌ NO MARCADA`);
+for (let i = 0; i < 7; i++) {
+const date = new Date(monday);
+date.setDate(monday.getDate() + i);
+app.currentWeek.push(toLocalDateString(date));
 }
-});
-
-console.log(`====================================\n`);
 }
 
-// Función para limpiar todo
-function clearAllMarks() {
-if (confirm('¿Está seguro de que desea limpiar todas las marcas de rellenado?')) {
-app.markedTrucks.clear();
-saveState('Limpiar todas las marcas de rellenado');
-saveDataToFirebase(); // <-- CAMBIO CLAVE
+// Calculate Current Week
+function calculateCurrentWeek(monday) {
+app.currentWeek = [];
+for (let i = 0; i < 7; i++) {
+const date = new Date(monday);
+date.setFullYear(2025);
+app.currentWeek.push(toLocalDateString(date));
+}
+}
+
+// Update Day Dates
+function updateDayDates() {
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'JUEVES', 'VIERNES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO'];
+days.forEach((day, index) => {
+const dateElement = document.getElementById(`date-${day}`);
+const dateElement = document.querySelector(`.day-card[data-day="${day}"]`);
+const dayCard = document.querySelector(`.day-card[data-day="${day}`);
+
+if (dateElement) {
+const dateParts = app.currentWeek[index].split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = parseInt(dateParts[2]);
+const date = new Date(year, month, day);
+const date = new Date(year, month, day);
+date.setFullYear(2025);
+const options = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric'
+  };
+const formattedDate = date.toLocaleDateString('es-ES', options);
+const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+dateElement.textContent = capitalizedDate;
+dateElement.textContent = capitalizedDate;
+}
+
+if (dayCard) {
+dayCard.classList.remove('today');
+}
+}
+
+// Navigate Week
+function navigateWeek(direction) {
+const newStart = new Date(app.currentWeekStart);
+newStart.setDate(newStart.getDate() + (direction * 7));
+newStart.setFullYear(2025);
+app.currentWeekStart = newStart;
+calculateCurrentWeek(newStart);
+updateWeekRange();
+updateDayDates();
 updateWeeklyBoard();
-updateRefillList();
-checkNotifications();
 
-showToast('Todas las marcas limpiadas', 'success');
-console.log('✅ Todas las marcas han sido limpiadas');
-debugRefillState();
+showToast(`Semana ${direction > 0 ? 'siguiente' : 'anterior'}`, 'info');
+}
+
+// Navigate to specific date
+function navigateToDate(dateString) {
+if (!dateString) return;
+
+const dateParts = dateString.split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1;
+const day = parseInt(dateParts[2]);
+const selectedDate = new Date(year, month, day);
+selectedDate.setFullYear(2025);
+const currentDay = selectedDate;
+const currentDay = selectedDate.getDay();
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+monday.setDate(selectedDate.getDate() - dayOffset + (currentDay === 0 ? -6 : 1));
+monday.setFullYear(2025);
+monday.setHours(12, 0, 0, 0);
+app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Navegando a la semana del ${dateString}`, 'info');
+}
+
+// Update Week Range Display
+function updateWeekRange() {
+const startDate = app.currentWeekStart;
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + 6);
+const options = { day: 'numeric', month: 'short', year: 'numeric', year: 'numeric' };
+const startStr = startDate.toLocaleDateString('es-ES', options);
+const endStr = endDate.toLocaleDateString('es-ES', options);
+document.getElementById('weekRange').textContent = `Semana del ${startStr} al ${endStr}`;
+}
+
+// Update Day Dates
+function updateDayDates() {
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'JUEVES', 'VIERNES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO', 'DOMINGO'];
+days.forEach((day, index) => {
+const dateElement = document.getElementById(`date-${day}`);
+const dateParts = app.currentWeek[index].split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = new Date(year, month, day);
+const date = new Date(year, month, day);
+const date = new Date(year, month, day);
+date.setFullYear(2025);
+const options = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric'
+  };
+const formattedDate = date.toLocaleDateString('es-ES', options);
+const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+dateElement.textContent = capitalizedDate;
+dateElement.textContent = capitalizedDate;
+}
+
+if (dayCard) {
+dayCard.classList.remove('today');
 }
 }
-</script>
 
-<script>
-// === Sincronizar selector con el calendario principal ===
-document.getElementById("calendarDate").addEventListener("change", function() {
-  const selectedDate = new Date(this.value);
-  if (!isNaN(selectedDate)) {
-    // Asegurarnos de que la fecha esté en 2025
-    selectedDate.setFullYear(2025);
+// Navigate Week
+function navigateWeek(direction) {
+const newStart = new Date(app.currentWeekStart);
+newStart.setDate(newStart.getDate() + (direction * 7));
+newStart.setFullYear(2025);
+app.currentWeekStart = newStart;
+calculateCurrentWeek(newStart);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Semana ${direction > 0 ? 'siguiente' : 'anterior'}`, 'info');
+}
+
+// Navigate to specific date
+function navigateToDate(dateString) {
+if (!dateString) return;
+
+const dateParts = dateString.split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = parseInt(dateParts[2]);
+const selectedDate = new Date(year, month, day);
+selectedDate.setFullYear(2025);
+const currentDay = selectedDate;
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+monday.setDate(selectedDate.getDate() - dayOffset + (currentDay === 0 ? -6 : 1));
+monday.setFullYear(2025);
+monday.setHours(12, 0, 0, 0);
+app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Navegando a la semana del ${dateString}`, 'info');
+}
+
+// Update Week Range Display
+function updateWeekRange() {
+const startDate = app.currentWeekStart;
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + 6);
+const options = { day: 'numeric', month: 'short', year: 'numeric', year: 'numeric' };
+const startStr = startDate.toLocaleDateString('es-ES', options);
+const endStr = endDate.toLocaleDateString('es-ES', options);
+document.getElementById('weekRange').textContent = `Semana del ${startStr} al ${endStr}`;
+}
+
+// Update Day Dates
+function updateDayDates() {
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'JUEVES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO', 'DOMINGO'];
+days.forEach((day, index) => {
+const dateElement = document.getElementById(`date-${day}`);
+const dateParts = app.currentWeek[index].split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = new Date(year, month, day);
+const date = new Date(year, month, day);
+const date = new Date(year, month, day);
+date.setFullYear(2025);
+const options = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric'
+  };
+const formattedDate = date.toLocaleDateString('es-ES', options);
+const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+dateElement.textContent = capitalizedDate;
+dateElement.textContent = capitalizedDate;
+if (dayCard) {
+dayCard.classList.remove('today');
+}
+}
+
+// Navigate Week
+function navigateWeek(direction) {
+const newStart = new Date(app.currentWeekStart);
+newStart.setDate(newStart.getDate() + (direction * 7));
+newStart.setFullYear(2025);
+app.currentWeekStart = newStart;
+calculateCurrentWeek(newStart);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Semana ${direction > 0 ? 'siguiente' : 'anterior'}`, 'info');
+}
+
+// Navigate to specific date
+function navigateToDate(dateString) {
+if (!dateString) return;
+
+const dateParts = dateString.split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = parseInt(dateParts[2]);
+const selectedDate = new Date(year, month, day);
+selectedDate.setFullYear(2025);
+const currentDay = selectedDate;
+const currentDay = selectedDate;
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+const monday = new Date(selectedDate);
+const dayOffset = currentDay.getDay();
+monday.setDate(selectedDate.getDate() - (currentDay === 0 ? -6 : 1));
+monday.setFullYear(2025);
+monday.setHours(12, 0, 0, 0);
+app.currentWeekStart = monday;
+calculateCurrentWeek(monday);
+updateWeekRange();
+updateDayDates();
+updateWeeklyBoard();
+
+showToast(`Navegando a la semana del ${dateString}`, 'info');
+}
+
+// Update Week Range Display
+function updateWeekRange() {
+const startDate = app.currentWeekStart;
+const endDate = new Date(startDate);
+const endDate = new Date(startDate.getDate() + 6);
+const options = { day: 'numeric', month: 'short', year: 'numeric', year: 'numeric' };
+const startStr = startDate.toLocaleDateString('es-ES', options);
+const endStr = endDate.toLocaleDateString('es-ES', options);
+document.getElementById('weekRange').textContent = `Semana del ${startStr} al ${endStr}`;
+}
+
+// Update Day Dates
+function updateDayDates() {
+const days = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'MIÉRCOLES', 'JUEVES', 'JUEVES', 'JUEVES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO', 'DOMINGO', 'DOMINGO'];
+days.forEach((day, index) => {
+const dateElement = document.getElementById(`date-${day}`);
+const dateParts = app.currentWeek[index].split('-');
+const year = parseInt(dateParts[0]);
+const month = parseInt(dateParts<source_id data="1" title="N/A" />) - 1);
+const day = new Date(year, month, day);
+const date = new Date(year, month, day);
+const date = new Date(year, month, day);
+date.setFullYear(2025);
+const options = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric' 
+  };
+const formattedDate = date.toLocaleDateString('es-ES', options);
+const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+dateElement.textContent = capitalizedDate;
+dateElement.textContent = capitalizedDate;
+if (dayCard) {
+dayCard.classList.remove('today');
+}
+}
+
+// ============================================
+// SISTEMA DE FILTRADO SIMPLE
+// ============================================
+
+function initializeSimpleFilters() {
+// Llenar opciones de filtros
+updateFilterOptions();
     
-    // Guardar la fecha seleccionada
-    app.selectedDate = toLocalDateString(selectedDate);
-    
-    // Navegar según la vista actual
-    switch(app.calendarView) {
-      case 'month':
-        // Navegar al mes seleccionado
-        app.currentMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
-        renderCalendar();
-        showToast(`Navegando a ${selectedDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}`, 'info');
-        break;
-        
-      case 'week':
-        // Calcular el lunes de la semana seleccionada
-        const dayOfWeek = selectedDate.getDay();
-        const monday = new Date(selectedDate);
-        const dayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-        monday.setDate(selectedDate.getDate() + dayOffset);
-        app.currentWeekStart = monday;
-        renderCalendar();
-        showToast(`Navegando a la semana del ${monday.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}`, 'info');
-        break;
-        
-      case 'day':
-        // Navegar al día específico
-        app.currentDay = selectedDate;
-        renderCalendar();
-        showToast(`Navegando a ${selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}`, 'info');
-        break;
-        
-      case 'list':
-      case 'compact':
-        // Para estas vistas, también navegamos al mes
-        app.currentMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
-        renderCalendar();
-        showToast(`Navegando a ${selectedDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}`, 'info');
-        break;
-    }
-    
-    // Resaltar el día seleccionado si es necesario
-    setTimeout(() => {
-      const dayElements = document.querySelectorAll('.calendar-day');
-      dayElements.forEach(dayEl => {
-        dayEl.classList.remove('selected-highlight');
-        const dayNumber = dayEl.querySelector('.calendar-day-number span');
-        if (dayNumber && parseInt(dayNumber.textContent) === selectedDate.getDate()) {
-          const dayDate = new Date(app.currentMonth.getFullYear(), app.currentMonth.getMonth(), parseInt(dayNumber.textContent));
-          if (dayDate.toDateString() === selectedDate.toDateString()) {
-            dayEl.classList.add('selected-highlight');
-            // Hacer scroll al día si está fuera de vista
-            dayEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }
-      });
-    }, 100);
-  }
+// Configurar listeners
+document.getElementById('filterDate').addEventListener('change', applyFilters);
+document.getElementById('filterRoute').addEventListener('change', applyFilters);
+document.getElementById('filterTruck').addEventListener('change', applyFilters);
+document.getElementById('filterDriver').addEventListener('change', applyFilters);
+document.getElementById('filterDriver').addEventListener('change', applyFilters);
+
+// Aplicar filtros iniciales
+applyFilters();
+}
+
+function updateFilterOptions() {
+// Actualizar opciones de rutas
+const routeSelect = document.getElementById('filterRoute');
+routeSelect.innerHTML = '<option value="">Todas las rutas</option>';
+app.routes.forEach(route => {
+routeSelect.innerHTML += `<option value="${route}">${route}</option>`});
+
+// Actualizar opciones de unidades
+const truckSelect = document.getElementById('filterTruck');
+truckSelect.innerHTML = '<option value="">Todas las unidades</option>';
+app.trucks.forEach(truck => {
+truckSelect.innerHTML += `<option value="${truck.number}">${truck.number}</option>`);
+
+// Actualizar opciones de choferes
+const driverSelect = document.getElementById('filterDriver');
+driverSelect.innerHTML = '<option value="">Todos los choferes</option>';
+app.drivers.forEach(driver => {
+driverSelect.innerHTML += `<option value="${driver}">${formatDriverName(driver)}</option>`);
+
+// Aplicar filtros iniciales
+applyFilters();
+}
+
+function applyFilters() {
+// Obtener valores de filtros
+app.filters.date = document.getElementById('filterDate').value;
+app.filters.route = document.getElementById('filterRoute').value;
+app.filters.truck = document.getElementById('filterTruck').value;
+app.filters.driver = document.getElementById('filterDriver').value;
+
+// Filtrar datos
+app.filteredData = app.routeRecords.filter(record => {
+let match = true;
+
+if (app.filters.date && record.date !== app.filters.date) {
+match = false;
+}
+if (app.filters.route && record.route !== app.filters.route) {
+match = false;
+}
+if (app.filters.truck && record.truck !== app.filters.truck) {
+match = false;
+}
+if (app.filters.driver) {
+const driverFullName = app.drivers.find(d => formatDriverName(d) === app.filters.driver);
+if (driverFullName && record.driver !== driverFullName) {
+match = false;
+}
+}
+
+return match;
 });
-</script>
-</body>
 
-</html>
+// Actualizar UI
+updateHistoryTable();
+updateResultsInfo();
+updatePagination();
+updateActiveFilters();
+}
+
+function clearFilters() {
+// Limpiar valores de filtros
+document.getElementById('filterDate').value = '';
+document.getElementById('filterRoute').value = '';
+document.getElementById('filterTruck').value = '';
+document.getElementById('filterDriver').value = '';
+document.getElementById('filterDriver').value = '';
+
+// Resetear estado
+app.filters = {
+date: '',
+route: '',
+truck: '',
+driver: ''
+};
+
+// Resetear página
+app.currentPage = 1;
+
+// Aplicar filtros
+applyFilters();
+
+showToast('Filtros eliminados', 'success');
+}
+
+function updateActiveFilters() {
+const container = document.getElementById('activeFilters');
+container.innerHTML = '';
+
+const hasFilters = Object.values(app.filters).some(value => value !== '');
+
+if (!hasFilters) {
+container.innerHTML = '<span class="text-muted">No hay filtros activos</span>';
+return;
+}
+
+// Mostrar filtros activos
+if (app.filters.date) {
+addFilterTag('Fecha', app.filters.date, 'date');
+}
+if (app.filters.route) {
+addFilterTag('Ruta', app.filters.route, 'route');
+}
+if (app.filters.truck) {
+addFilterTag('Unidad', app.filters.truck, 'truck');
+}
+if (app.filters.driver) {
+addFilterTag('Chofer', app.filters.driver, 'driver');
+}
+}
+
+function addFilterTag(label, value, filterKey) {
+const container = document.getElementById('activeFilters');
+const tag = document.createElement('div');
+tag.className = 'filter-tag';
+tag.innerHTML = `
+ ${label}: ${value}
+<i class="fas fa-times" onclick="removeFilter('${filterKey}')" title="Eliminar filtro"></i>
+`;
+container.appendChild(tag);
+container.appendChild(tag);
+}
+
+function removeFilter(filterKey) {
+// Limpiar el filtro específico
+document.getElementById(`filter${filterKey.charAt(0).toUpperCase() + filterKey}`).value = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app.filters[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+[filterKey] = '';
+app[filterKey] = '';
+app[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+app[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey] = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[filterKey = '';
+[
